@@ -3,7 +3,7 @@ Neural Clarity Learning
 Implementation of "A Neural Local Coherence Analysis Model for Text Clarity Scoring"
 
 ## Installation
-1. Download and install Anaconda (https://www.anaconda.com/products/individual)
+1. Download and install [Anaconda](https://www.anaconda.com/products/individual)
 2. Create environment
 ```
 conda create --name local_coh --file requirements.txt
