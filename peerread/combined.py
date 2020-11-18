@@ -87,7 +87,7 @@ for training_seed in range(42, 52):
         coh_checkpoint = None
 
     def gen_hp():
-        for batch_size in [1]:
+        for batch_size in [8]:
             for lr in [3e-5]:
                 yield batch_size, lr
 
