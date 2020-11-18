@@ -1,4 +1,4 @@
-.gitignore/
+.gitignore
 discourse/__pycache__
 discourse/results
 discourse/sentence_pair_rel.csv
