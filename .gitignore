@@ -1,8 +1,0 @@
-.gitignore
-discourse/__pycache__
-discourse/results
-discourse/sentence_pair_rel.csv
-peerread/introduction_data
-peerread/__pycache__
-peerread/results
-peerread/models/__pycache__
