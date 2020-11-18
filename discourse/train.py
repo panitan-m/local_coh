@@ -78,34 +78,21 @@ for dataset_type in dataset_types:
     _token_type_ids = []
     _attention_masks = []
     for a, b in zip(text_a[dataset_type], text_b[dataset_type]):
-        __input_ids = []
-        __token_type_ids = []
-        __attention_masks = []
-        for text in [a, b]:
-            encoded_dict = tokenizer.encode_plus(text,
-                                                add_special_tokens=True,
-                                                max_length=max_len,
-                                                truncation=True,
-                                                pad_to_max_length=True,
-                                                return_token_type_ids=True,
-                                                return_attention_mask=True,
-                                                return_tensors='pt')
-            __input_ids.append(encoded_dict['input_ids'])
-            __token_type_ids.append(encoded_dict['token_type_ids'])
-            __attention_masks.append(encoded_dict['attention_mask'])
+        encoded_dict = tokenizer.encode_plus(a, b,
+                                            max_length=max_len,
+                                            padding='max_length',
+                                            truncation=True,
+                                            return_token_type_ids=True,
+                                            return_attention_mask=True,
+                                            return_tensors='pt')
+        _input_ids.append(encoded_dict['input_ids'])
+        _token_type_ids.append(encoded_dict['token_type_ids'])
+        _attention_masks.append(encoded_dict['attention_mask'])
 
-        __input_ids = torch.cat(__input_ids)
-        __token_type_ids = torch.cat(__token_type_ids)
-        __attention_masks = torch.cat(__attention_masks)
-
-        _input_ids.append(__input_ids)
-        _token_type_ids.append(__token_type_ids)
-        _attention_masks.append(__attention_masks)
-
-    input_ids[dataset_type] = torch.stack(_input_ids)
-    token_type_ids[dataset_type] = torch.stack(_token_type_ids)
-    attention_masks[dataset_type] = torch.stack(_attention_masks)
-    labels[dataset_type] = torch.tensor(labels[dataset_type])
+    input_ids[dataset_type] = torch.cat(_input_ids)
+    token_type_ids[dataset_type] = torch.cat(_token_type_ids)
+    attention_masks[dataset_type] = torch.cat(_attention_masks)
+    labels[dataset_type] = torch.Tensor(labels[dataset_type]).long()
 
 train_dataset = TensorDataset(input_ids['train'], token_type_ids['train'], attention_masks['train'], labels['train'])
 val_dataset = TensorDataset(input_ids['val'], token_type_ids['val'], attention_masks['val'], labels['val'])
@@ -147,7 +134,7 @@ for batch_size in [8, 16, 32]:
                                         sampler=SequentialSampler(test_dataset),
                                         batch_size=batch_size)
         
-        model = CohModel(max_len=max_len)
+        model = CohModel()
         model.cuda()
 
         optimizer = AdamW(model.parameters(), lr=lr, eps=1e-6)
