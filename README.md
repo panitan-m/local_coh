@@ -11,7 +11,7 @@ conda activate local_coh
 ```
 
 ## Dataset
-1. Discourse Graphbank
+1. [Discourse Graphbank](https://catalog.ldc.upenn.edu/LDC2005T08)
 2. [PeerRead](https://github.com/allenai/PeerRead)
 
 ## Training
