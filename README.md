@@ -6,7 +6,7 @@ Implementation of "A Neural Local Coherence Analysis Model for Text Clarity Scor
 1. Download and install [Anaconda](https://www.anaconda.com/products/individual)
 2. Create environment
 ```
-conda create --name local_coh --file requirements.txt
+conda env create -f environment.yml
 conda activate local_coh
 ```
 
