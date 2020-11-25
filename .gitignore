@@ -1,0 +1,7 @@
+discourse/__pycache__
+discourse/results
+discourse/sentence_pair_rel.csv
+peerread/__pycache__
+peerread/models/__pycache__
+peerread/results
+peerread/introduction_data
