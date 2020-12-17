@@ -1,6 +1,6 @@
 Neural Clarity Learning
 ==
-Implementation of "A Neural Local Coherence Analysis Model for Text Clarity Scoring"
+Implementation of [A Neural Local Coherence Analysis Model for Text Clarity Scoring](https://www.aclweb.org/anthology/2020.coling-main.194)
 
 ## Installation
 1. Download and install [Anaconda](https://www.anaconda.com/products/individual)
